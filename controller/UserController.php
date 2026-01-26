@@ -1,6 +1,5 @@
 <?php
-require_once("../model/User.php");
-require_once("../repository/UserRepository.php");
+
 class UserController
 {
     // le static me permet d'appeler une propriété ou une methode de class
@@ -18,5 +17,9 @@ class UserController
             $userRepository = new UserRepository;
             $userRepository->createUser($user);
         }
+    }
+    public static function getUserByEmail(){
+        $userRepository = new UserRepository;
+        var_dump($userRepository->getBy(["user","email","azerty@azerty.com"]));
     }
 }
