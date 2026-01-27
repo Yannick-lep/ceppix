@@ -42,10 +42,19 @@ class UserController
             if(sizeof($newUser)>0){
                 if(password_verify($_POST['pwd'],$newUser[0]['pwd'])){
                     var_dump("pwd ok");
+                    $user = new User($newUser[0]['nom'],
+                    $newUser[0]['email'],
+                    $newUser[0]['pwd'],
+                    $newUser[0]['roles'],
+                    $newUser[0]['createdAt'],
+                    $newUser[0]['updatedAt']);
+                    $_SESSION['user'] = $user;
                 }
             }
-            die;
         }
+    }
+    public static function logout(){
+        session_destroy();
     }
     public static function nettoyage($postValue){
         return htmlspecialchars($postValue);
