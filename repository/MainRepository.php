@@ -18,9 +18,9 @@ class MainRepository
     }
     // READs
     /**
-     * fourni jshdgfj<sfj<s<j
+     * attention parametre tout nul
      *
-     * @param array|null $value
+     * @param array|null $value ['table','key','value']
      * @return array
      */
     public function getBy(?array $value)

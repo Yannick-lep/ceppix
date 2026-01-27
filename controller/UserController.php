@@ -36,8 +36,15 @@ class UserController
     public static function login (){
         if(isset($_POST['submit']) && !empty($_POST['submit'])){
             $userRepository = new UserRepository;
-            $newUser = $userRepository->getBy(['email'=>UserController::nettoyage($_POST['email'])]);
+
+            $newUser = $userRepository->getBy(['user','email',UserController::nettoyage($_POST['email'])]);
             //...test
+            if(sizeof($newUser)>0){
+                if(password_verify($_POST['pwd'],$newUser[0]['pwd'])){
+                    var_dump("pwd ok");
+                }
+            }
+            die;
         }
     }
     public static function nettoyage($postValue){
