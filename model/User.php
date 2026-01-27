@@ -2,16 +2,22 @@
 // creation d'une class User
 class User
 {
-    public function __construct($nom,$email,$pwd)
+    public function __construct($nom,$email,$pwd,$roles,$createdAt,$updatedAt)
     {
         $this->setNom($nom);
         $this->setEmail($email);
         $this->setPwd($pwd);
+        $this->setRoles($roles);
+        $this->setCreatedAt($createdAt);
+        $this->setUpdatedAt($updatedAt);
     }
     private $nom;
-    private $role = "ROLE_USER";
     private $email;
     private $pwd;
+    private $roles;
+    private $createdAt;
+    private $updatedAt;
+
     protected function setNom ($nom){
         if(strlen($nom)>20){
             throw new Exception('Nom doit être inferieur à 20 caractères.');
@@ -49,5 +55,23 @@ class User
     }
     public function getPwd(){
         return $this->pwd;
+    }
+    public function setRoles($roles){
+        $this->roles = $roles;
+    }
+    public function getRoles(){
+        return $this->roles;
+    }
+    public function setCreatedAt($createdAt){
+        $this->createdAt = $createdAt;
+    }
+    public function getCreatedAt(){
+        return $this->createdAt;
+    }
+    public function setUpdatedAt($updatedAt){
+        $this->updatedAt = $updatedAt;
+    }
+    public function getUpdatedAt(){
+        return $this->updatedAt;
     }
 }
