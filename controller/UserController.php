@@ -33,4 +33,14 @@ class UserController
         var_dump($userRepository->getBy(["user","email","azerty@azerty.com"]));
         $userRepository->create(["nom"=>"Bob","email"=>"baob@bob.com","pwd"=>"azerty"],"user");
     }
+    public static function login (){
+        if(isset($_POST['submit']) && !empty($_POST['submit'])){
+            $userRepository = new UserRepository;
+            $newUser = $userRepository->getBy(['email'=>UserController::nettoyage($_POST['email'])]);
+            //...test
+        }
+    }
+    public static function nettoyage($postValue){
+        return htmlspecialchars($postValue);
+    }
 }

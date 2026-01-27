@@ -17,6 +17,12 @@ class MainRepository
         return $req->fetchAll();
     }
     // READs
+    /**
+     * fourni jshdgfj<sfj<s<j
+     *
+     * @param array|null $value
+     * @return array
+     */
     public function getBy(?array $value)
     {
         global $pdo;
