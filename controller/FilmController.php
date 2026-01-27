@@ -6,4 +6,9 @@ class FilmController {
         var_dump($filmRepository->getFilmsByCast("eastwood"));
     
     }
+    public static function getRandomFilms(){
+        $filmRepository = new FilmRepository;
+        
+        return $filmRepository->getRandomFilms();
+    }
 }
