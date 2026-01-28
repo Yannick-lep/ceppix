@@ -79,13 +79,12 @@ class UserController
         move_uploaded_file($_FILES['avatar']['tmp_name'],"./public/assets/avatar/".$_FILES['avatar']['full_path']);
         //integration Bundle 
         $image = new \Gumlet\ImageResize("./public/assets/avatar/".$_FILES['avatar']['full_path']);
-        var_dump($image);
         $image->resizeToWidth(300);
         $image->save("./public/assets/avatar/".$lastId.".webp", IMAGETYPE_WEBP);
         if(!file_exists("./public/assets/avatar/thumbnail"))mkdir("./public/assets/avatar/thumbnail",0755);
         $image->resizeToWidth(50);
         $image->save("./public/assets/avatar/thumbnail/".$lastId.".webp", IMAGETYPE_WEBP);
-
+        unlink("./public/assets/avatar/".$_FILES['avatar']['full_path']);
         return "c'est tout bon";    
     }
 }

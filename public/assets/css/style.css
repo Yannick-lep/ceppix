@@ -1,0 +1,8 @@
+ * {
+     box-sizing: border-box;
+     font-family: Verdana, Geneva, Tahoma, sans-serif;
+ }
+ img, input{
+    width: 100%;
+    vertical-align: bottom;
+ }

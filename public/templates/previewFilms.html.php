@@ -1,7 +1,4 @@
 <style>
-    *{
-        box-sizing: border-box;
-    }
     .preview-films {
         display: flex;
         flex-wrap: wrap;
@@ -25,6 +22,7 @@
         font-weight: 900;
     }
 </style>
+<h2>Nos plus grands films :</h2>
 <div class="preview-films">
     <?php foreach (FilmController::getRandomFilms() as $key => $value) { ?>
         <div class="card-film">

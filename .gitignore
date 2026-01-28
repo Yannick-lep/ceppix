@@ -1,4 +1,5 @@
 *.jpg
+*.webp
 AGENTS.md
 
 /vendor/
