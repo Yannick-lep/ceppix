@@ -28,7 +28,7 @@ class UserController
             $lastId = $userRepository->create($arrayUser,"user");
             var_dump($_FILES);
             // appel de la methode uploadAvatar
-
+            echo UserController::uploadAvatar($lastId);
             die;
         }
     }
@@ -73,11 +73,16 @@ class UserController
             'error' => int 0
             'size' => int 57658 */
         //filtres
-        if(!isset($_FILES['avatar'])) return;
-        if($_FILES['avatar']['error'] > 0) return;
-        if(!preg_match("/(jpg)(jpeg)(png)(webp)(gif)/",$_FILES['avatar']['type'])) return;
+        if(!isset($_FILES['avatar'])) return "pas de fichier";
+        if($_FILES['avatar']['error'] > 0) return "error";
+        if(!preg_match("/(jpg)|(jpeg)|(png)|(webp)|(gif)/",$_FILES['avatar']['type'])) return "type mime";
         if(!file_exists("./public/assets/avatar"))mkdir("./public/assets/avatar",0755);
         move_uploaded_file($_FILES['avatar']['tmp_name'],"./public/assets/avatar/".$_FILES['avatar']['full_path']);
-            
+        //integration Bundle 
+        $image = new \Gumlet\ImageResize("./public/assets/avatar/".$_FILES['avatar']['full_path']);
+        var_dump($image);
+        
+        
+        return "c'est tout bon";    
     }
 }

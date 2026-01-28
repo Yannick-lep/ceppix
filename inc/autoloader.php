@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once("./inc/pdo.php");
+require_once("./vendor/autoload.php");
 spl_autoload_register(function ($class) {
     $path = __DIR__."/..";
     $classFolder = [

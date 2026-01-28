@@ -1,2 +1,4 @@
 *.jpg
 AGENTS.md
+
+/vendor/
