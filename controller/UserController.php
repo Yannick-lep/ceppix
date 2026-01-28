@@ -28,8 +28,7 @@ class UserController
             $lastId = $userRepository->create($arrayUser,"user");
             var_dump($_FILES);
             // appel de la methode uploadAvatar
-            echo UserController::uploadAvatar($lastId);
-            die;
+            UserController::uploadAvatar($lastId);
         }
     }
     public static function getUserByEmail(){
@@ -81,8 +80,12 @@ class UserController
         //integration Bundle 
         $image = new \Gumlet\ImageResize("./public/assets/avatar/".$_FILES['avatar']['full_path']);
         var_dump($image);
-        
-        
+        $image->resizeToWidth(300);
+        $image->save("./public/assets/avatar/".$lastId.".webp", IMAGETYPE_WEBP);
+        if(!file_exists("./public/assets/avatar/thumbnail"))mkdir("./public/assets/avatar/thumbnail",0755);
+        $image->resizeToWidth(50);
+        $image->save("./public/assets/avatar/thumbnail/".$lastId.".webp", IMAGETYPE_WEBP);
+
         return "c'est tout bon";    
     }
 }
