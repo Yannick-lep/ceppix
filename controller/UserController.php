@@ -25,7 +25,11 @@ class UserController
                 "createdAt"=>$user->getCreatedAt(),
                 "updatedAt"=>$user->getUpdatedAt()
             ];
-            $userRepository->create($arrayUser,"user");
+            $lastId = $userRepository->create($arrayUser,"user");
+            var_dump($_FILES);
+            // appel de la methode uploadAvatar
+
+            die;
         }
     }
     public static function getUserByEmail(){
@@ -50,6 +54,7 @@ class UserController
                     $newUser[0]['updatedAt']);
                     $_SESSION['userid'] = $newUser[0]['id_user'];
                     $_SESSION['usernom'] = $newUser[0]['nom'];
+                    
                 }
             }
         }
@@ -59,5 +64,20 @@ class UserController
     }
     public static function nettoyage($postValue){
         return htmlspecialchars($postValue);
+    }
+    public static function uploadAvatar($lastId){
+        /* 'name' => string 'XenonBally.jpg' (length=14)
+            'full_path' => string 'XenonBally.jpg' (length=14)
+            'type' => string 'image/jpeg' (length=10)
+            'tmp_name' => string 'C:\wamp64\tmp\php3407.tmp' (length=25)
+            'error' => int 0
+            'size' => int 57658 */
+        //filtres
+        if(!isset($_FILES['avatar'])) return;
+        if($_FILES['avatar']['error'] > 0) return;
+        if(!preg_match("/(jpg)(jpeg)(png)(webp)(gif)/",$_FILES['avatar']['type'])) return;
+        if(!file_exists("./public/assets/avatar"))mkdir("./public/assets/avatar",0755);
+        move_uploaded_file($_FILES['avatar']['tmp_name'],"./public/assets/avatar/".$_FILES['avatar']['full_path']);
+            
     }
 }

@@ -1,4 +1,6 @@
-<form action="./fakerouter.php?ctrl=user&meth=register" method="post">
+<form action="./fakerouter.php?ctrl=user&meth=register"
+enctype="multipart/form-data"
+method="post">
     <div>
         <input type="text" name="nom" placeholder="Nom">
         <span class="error"></span>
@@ -13,7 +15,11 @@
     </div>
     <div>
         <input type="text" name="confpwd" placeholder="Confirm password">
-        <span class="error"></span></div>
+        <span class="error"></span>
+    </div>
+    <div>
+        <input type="file" name="avatar"><span class="error"></span>
+    </div>
     <div>
         <input type="submit" name="submit" value="Register">
         <span class="error"></span>

@@ -13,6 +13,8 @@ class FilmController {
             $imgurl = "./public/assets/posters/".$value['id_movies_full'].".jpg";
             if(file_exists($imgurl)){
                 $randFilms[$key]['img']=$imgurl;
+            } else {
+                $randFilms[$key]['img']="./public/assets/posters/default.jpg";
             }
         }
         return $randFilms;
