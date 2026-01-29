@@ -11,6 +11,18 @@ class FilmRepository extends MainRepository{
         $rq->execute([":cast"=>"%$cast%"]);
         return $rq->fetchAll();
     }
+    // recherche de films par tout
+    public function getFilmsBySearch($search,$filtre){
+        global $pdo;
+        $allowed = ["title", "plot", "cast", "directors", "year"];
+        if (!in_array($filtre, $allowed, true)) {
+            $filtre = "title";
+        }
+        $sql = "SELECT * FROM movies_full WHERE {$filtre} LIKE :search LIMIT 10";
+        $rq = $pdo->prepare($sql);
+        $rq->execute([":search"=>"%$search%"]);
+        return $rq->fetchAll();
+    }
     //recherche de 10 films random
     public function getRandomFilms(){
         global $pdo;
