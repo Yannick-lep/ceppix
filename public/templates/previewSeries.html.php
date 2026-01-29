@@ -14,11 +14,13 @@
         box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.27);
         margin-bottom: 1rem;
     }
+
     .card-serie:last-child {
         margin-right: auto;
         margin-left: 1.5%;
     }
-    .title{
+
+    .title {
         font-weight: 900;
     }
 </style>
@@ -26,9 +28,10 @@
 <div class="preview-series">
     <?php foreach (SerieController::previewSeries() as $key => $value) { ?>
         <div class="card-serie">
-            <div><img src="" alt=""></div>
+            <div><img src="<?= $value['show']['image']['medium'] ?>" alt=""></div>
             <p class="title"><?= $value['show']['name'] ?></p>
-          
+            <p class="title"><?= $value['show']['summary'] ?></p>
+            <p class="title"><?= $value['show']['network']['name'] ?></p>
         </div>
     <?php } ?>
 </div>

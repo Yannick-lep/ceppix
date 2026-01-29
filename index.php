@@ -2,6 +2,11 @@
 require_once("./inc/autoloader.php");
 /* UserController::getUserByEmail();
 FilmController::getFilmsByCast(); */
+
+$loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/public/templates");
+$twig = new \Twig\Environment($loader, [
+    "cache" => false
+]); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,12 +78,11 @@ FilmController::getFilmsByCast(); */
             include_once("./public/templates/register.html.php");
             include_once("./public/templates/login.html.php");
         }
-
-
-
         ?>
     </main>
-    <footer></footer>
+    <footer>
+        <?php echo ChuckController::randomJoke($twig); ?>
+    </footer>
 </body>
 
 </html>
