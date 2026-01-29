@@ -73,7 +73,8 @@ $twig = new \Twig\Environment($loader, [
             // afficher 10 films
             include_once("./public/templates/previewFilms.html.php");
             // affficher 10 series
-            include_once("./public/templates/previewSeries.html.php");
+            //include_once("./public/templates/previewSeries.html.php");
+            echo SerieController::previewSeries($twig);
         } else {
             include_once("./public/templates/register.html.php");
             include_once("./public/templates/login.html.php");

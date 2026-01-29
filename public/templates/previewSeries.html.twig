@@ -26,12 +26,15 @@
 </style>
 <h2>Nos plus grandes series :</h2>
 <div class="preview-series">
-    <?php foreach (SerieController::previewSeries() as $key => $value) { ?>
+    {# <?php foreach (SerieController::previewSeries() as $key => $value) { ?> #}
+    {% for serie in series %}
         <div class="card-serie">
-            <div><img src="<?= $value['show']['image']['medium'] ?>" alt=""></div>
-            <p class="title"><?= $value['show']['name'] ?></p>
-            <p class="title"><?= $value['show']['summary'] ?></p>
-            <p class="title"><?= $value['show']['network']['name'] ?></p>
+            {# <div><img src="<?= $value['show']['image']['medium'] ?>" alt=""></div> #}
+            <div><img src={{ serie.show.image.medium }} alt=""></div>
+            <p class="title">{{ serie.show.name }}</p>
+            <p class="title">{{ serie.show.summary|striptags }}</p>
+            <p class="title">{{ serie.show.network.name }}</p>
         </div>
-    <?php } ?>
+    {# <?php } ?> #}
+    {% endfor %}
 </div>

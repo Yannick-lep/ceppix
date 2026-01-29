@@ -1,7 +1,7 @@
 <?php
 class SerieController
 {
-    public static function previewSeries($twig)
+    public static function previewSeries(\Twig\Environment $twig)
     {
         $series = json_decode(file_get_contents("https://api.tvmaze.com/search/shows?q=game"),true);
         foreach ($series as $key => $value) {
