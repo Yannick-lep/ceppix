@@ -1,10 +1,13 @@
 <?php
+/* namespace App\Repository;
+
+use MainRepository; */
 
 class FilmRepository extends MainRepository{
     // recherche de films par acteur
     public function getFilmsByCast($cast){
         global $pdo;
-        $rq = $pdo->prepare("SELECT * FROM movies_full WHERE cast LIKE :cast");
+        $rq = $pdo->prepare("SELECT * FROM movies_full WHERE cast LIKE :cast LIMIT 10");
         $rq->execute([":cast"=>"%$cast%"]);
         return $rq->fetchAll();
     }

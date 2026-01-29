@@ -69,9 +69,13 @@ $twig = new \Twig\Environment($loader, [
         if (isset($_SESSION['userid']) && !empty($_SESSION['userid'])) {
             echo '<div>Bonjour ' . $_SESSION['usernom'] . ' 🫶 <img style="width:50px" src="./public/assets/avatar/thumbnail/' . $_SESSION['userid'] . '.webp"></div>';
 
-            echo '<a href="./fakerouter.php?ctrl=user&meth=logout">Logout</a>';
+            echo '<a href="./fakerouter.php?ctrl=user&meth=logout">Logout</a><br><br>';
+            // formulaire de recherche
+            echo SearchController::formSearch($twig);
+            echo SearchController::resultSearch($twig);
+
             // afficher 10 films
-            include_once("./public/templates/previewFilms.html.php");
+            echo FilmController::getRandomFilms($twig);
             // affficher 10 series
             //include_once("./public/templates/previewSeries.html.php");
             echo SerieController::previewSeries($twig);

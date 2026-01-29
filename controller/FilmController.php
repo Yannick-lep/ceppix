@@ -1,4 +1,7 @@
 <?php
+/* namespace App\Controller;
+
+use App\Repository\FilmRepository; */
 
 class FilmController {
     public static function getFilmsByCast(){
@@ -6,7 +9,7 @@ class FilmController {
         var_dump($filmRepository->getFilmsByCast("eastwood"));
     
     }
-    public static function getRandomFilms(){
+    public static function getRandomFilms($twig){
         $filmRepository = new FilmRepository;
         $randFilms = $filmRepository->getRandomFilms();
         foreach ($randFilms as $key => $value) {
@@ -17,6 +20,6 @@ class FilmController {
                 $randFilms[$key]['img']="./public/assets/posters/default.jpg";
             }
         }
-        return $randFilms;
+        return $twig->render("previewFilms.html.twig",["films"=>$randFilms]);
     }
 }

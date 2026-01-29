@@ -1,0 +1,37 @@
+<style>
+    .preview-films {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 1rem;
+    }
+
+    .card-film {
+        padding: .5rem;
+        width: 24%;
+        border-radius: 15px;
+        -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.27);
+        box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.27);
+        margin-bottom: 1rem;
+    }
+    .card-film:last-child {
+        margin-right: auto;
+        margin-left: 1.5%;
+    }
+    .title{
+        font-weight: 900;
+    }
+</style>
+<h2>Nos plus grands films :</h2>
+<div class="preview-films">
+    {% for film in films %}
+        <div class="card-film">
+            <div><img src={{ film.img }} alt=""></div>
+            <p class="title">{{ film.title }}</p>
+            <p class="plot">{{ film.plot }}</p>
+            <p class="year">{{ film.year }}</p>
+            <p class="cast">{{ film.cast }}</p>
+            <p class="directors">{{ film.directors }}</p>
+        </div>
+    {% endfor %}
+</div>

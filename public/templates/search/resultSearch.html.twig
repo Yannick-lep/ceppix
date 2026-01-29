@@ -22,16 +22,19 @@
         font-weight: 900;
     }
 </style>
-<h2>Nos plus grands films :</h2>
-<div class="preview-films">
-    <?php foreach (FilmController::getRandomFilms() as $key => $value) { ?>
-        <div class="card-film">
-            <div><img src="<?= $value['img'] ?>" alt=""></div>
-            <p class="title"><?= $value['title'] ?></p>
-            <p class="plot"><?= $value['plot'] ?></p>
-            <p class="year"><?= $value['year'] ?></p>
-            <p class="cast"><?= $value['cast'] ?></p>
-            <p class="directors"><?= $value['directors'] ?></p>
-        </div>
-    <?php } ?>
+<div>
+    {% for result in results %}
+    <div class="card-film">
+        <div><img src={{ result.img }} alt=""></div>
+        <p class="title">{{ result.title }}</p>
+        <p class="plot">{{ result.plot }}</p>
+        <p class="year">{{ result.year }}</p>
+        <p class="cast">{{ result.cast }}</p>
+        <p class="directors">{{ result.directors }}</p>
+    </div>
+
+    {% else %}
+    Pas de resultats
+
+    {% endfor %}
 </div>
