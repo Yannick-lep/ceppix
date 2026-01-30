@@ -79,6 +79,7 @@ $twig = new \Twig\Environment($loader, [
             // affficher 10 series
             //include_once("./public/templates/previewSeries.html.php");
             echo SerieController::previewSeries($twig);
+            echo PokemonController::randomPokemon($twig);
         } else {
             include_once("./public/templates/register.html.php");
             include_once("./public/templates/login.html.php");
